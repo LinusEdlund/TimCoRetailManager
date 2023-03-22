@@ -6,19 +6,19 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using TMRDataManager.Library.DataAccess;
-using TMRDataManager.Library.Models;
+using TRMDataManager.Models;
 
 namespace TRMDataManager.Controllers
 {
     [Authorize]
-    public class ProductController : ApiController
+    public class SaleController : ApiController
     {
-        // TODO: Det här är hur vi får producterna som vi vissar    
-        public List<ProductModel> Get()
+        public void Post(SaleModel sale)
         {
-            ProductData data = new ProductData();
+            SaleData data = new SaleData();
+            string userId = RequestContext.Principal.Identity.GetUserId();
 
-            return data.GetProducts();
+            data.SaveSale(sale, userId);
         }
     }
 }

@@ -13,8 +13,8 @@ namespace TRMDesktopUI.ViewModels
     public class LoginViewModel : Screen
     {
 		// varje gång vi byter username eller password så kommer set säga att vi har gjort de
-		private string _userName;
-		private string _password;
+		private string _userName = "linus.edlund2@hotmail.com";
+		private string _password = "Pwd12345.";
 		private IAPIHelper _apiHelper;
 		private IEventAggregator _events;
 
