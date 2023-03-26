@@ -10,7 +10,7 @@ using TMRDataManager.Library.Models;
 
 namespace TRMDataManager.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Cashier")]
     public class ProductController : ApiController
     {
         // TODO: Det här är hur vi får producterna som vi vissar    
