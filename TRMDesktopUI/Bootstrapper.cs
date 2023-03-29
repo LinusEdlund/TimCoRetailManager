@@ -50,6 +50,7 @@ namespace TRMDesktopUI
 
             _container.Instance(_container)
                 .PerRequest<IProductEndpoint, ProductEndpoint>()
+                .PerRequest<IUserEndpotin, UserEndpotin>()
                 .PerRequest<ISaleEndpoint, SaleEndpoint>();
 
 
