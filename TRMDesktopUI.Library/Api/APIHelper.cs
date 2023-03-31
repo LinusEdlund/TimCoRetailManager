@@ -17,8 +17,6 @@ namespace TRMDesktopUI.Library.Api
         private HttpClient _apiClient;
         private ILoggedInUserModel _loggedInUser;
 
-        // så fort du kallar på den här klassen kommer ju de i konstrukton att ske 
-        // även om den är private 
         public APIHelper(ILoggedInUserModel loggedInUser)
         {
             InitializeClient();
