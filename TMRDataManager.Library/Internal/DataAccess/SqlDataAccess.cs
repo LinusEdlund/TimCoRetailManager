@@ -14,6 +14,7 @@ namespace TMRDataManager.Library.Internal.DataAccess
     {
         public string GetConnectionString(string name)
         {
+            //return @"Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=TRMData;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
 
