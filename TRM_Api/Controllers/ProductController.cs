@@ -13,20 +13,18 @@ namespace TRM_Api.Controllers
     [Authorize(Roles = "Cashier")]
     public class ProductController : ControllerBase
     {
-        private readonly IConfiguration _config;
+        private readonly IProductData _productData;
 
-        public ProductController(IConfiguration config)
+        public ProductController(IProductData productData)
         {
-            _config = config;
+            _productData = productData;
         }
 
         // TODO: Det här är hur vi får producterna som vi vissar    
         [HttpGet]
         public List<ProductModel> Get()
         {
-            ProductData data = new ProductData(_config);
-
-            return data.GetProducts();
+            return _productData.GetProducts();
         }
     }
 }

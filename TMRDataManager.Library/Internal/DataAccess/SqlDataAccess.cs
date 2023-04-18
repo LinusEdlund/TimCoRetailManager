@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace TMRDataManager.Library.Internal.DataAccess
 {
-    internal class SqlDataAccess : IDisposable
+    public class SqlDataAccess : IDisposable, ISqlDataAccess
     {
 
         public SqlDataAccess(IConfiguration config)
-        {
+        { 
             _config = config;
         }
         public string GetConnectionString(string name)
@@ -23,7 +23,7 @@ namespace TMRDataManager.Library.Internal.DataAccess
             return _config.GetConnectionString(name);
         }
 
-        public List<T> LoadData<T, U>(string storedProcedure, U parameters, string connectionStringName) 
+        public List<T> LoadData<T, U>(string storedProcedure, U parameters, string connectionStringName)
         {
             string connectionString = GetConnectionString(connectionStringName);
 
@@ -64,9 +64,9 @@ namespace TMRDataManager.Library.Internal.DataAccess
         public List<T> LoadDataInTransaction<T, U>(string storedProcedure, U parameters)
         {
 
-                List<T> rows = _connection.Query<T>(storedProcedure, parameters, commandType: CommandType.StoredProcedure, transaction: _transaction).ToList();
+            List<T> rows = _connection.Query<T>(storedProcedure, parameters, commandType: CommandType.StoredProcedure, transaction: _transaction).ToList();
 
-                return rows;
+            return rows;
 
         }
 
