@@ -13,6 +13,8 @@ namespace TMRDataManager.Library
         {
             string rateText = ConfigurationManager.AppSettings["taxRate"];
 
+            // rateText = "8,75";
+
             bool IsValidTaxRate = Decimal.TryParse(rateText, out decimal output);
 
             if (IsValidTaxRate == false)
