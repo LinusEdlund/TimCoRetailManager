@@ -31,6 +31,7 @@ namespace TRMDesktopUI.ViewModels
 
         public bool IsLoggedIn
         {
+
             get
             {
                 bool output = false;
@@ -45,6 +46,15 @@ namespace TRMDesktopUI.ViewModels
 
         }
 
+        public bool IsLoggedOut
+        {
+            get 
+            { 
+                return !IsLoggedIn; 
+            }
+
+        }
+
 
         public void ExitApplication()
         {
@@ -56,18 +66,25 @@ namespace TRMDesktopUI.ViewModels
             await ActivateItemAsync(IoC.Get<UserDisplayViewModel>());
         }
 
+        public async Task LogIn()
+        {
+            await ActivateItemAsync(IoC.Get<LoginViewModel>());
+        }
+
         public async Task LogOut()
         {
             _user.ResetUserModel();
             _apiHelper.LogOffUser();
             await ActivateItemAsync(IoC.Get<LoginViewModel>());
             NotifyOfPropertyChange(() => IsLoggedIn);
+            NotifyOfPropertyChange(() => IsLoggedOut);
         }
 
         public async Task HandleAsync(LogOnEvent message, CancellationToken cancellationToken)
         {
             await ActivateItemAsync(IoC.Get<SalesViewModel>(), cancellationToken);
             NotifyOfPropertyChange(() => IsLoggedIn);
+            NotifyOfPropertyChange(() => IsLoggedOut);
         }
     }
 }
