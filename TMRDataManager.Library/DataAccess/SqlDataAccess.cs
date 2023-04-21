@@ -10,13 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TMRDataManager.Library.Internal.DataAccess
+namespace TMRDataManager.Library.DataAccess
 {
     public class SqlDataAccess : IDisposable, ISqlDataAccess
     {
 
         public SqlDataAccess(IConfiguration config, ILogger<SqlDataAccess> logger)
-        { 
+        {
             _config = config;
             _logger = logger;
         }
@@ -106,7 +106,7 @@ namespace TMRDataManager.Library.Internal.DataAccess
                 {
                     CommitTransaction();
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
                     _logger.LogError(ex, "Commit transaction failed in the dispose method.");
                 }

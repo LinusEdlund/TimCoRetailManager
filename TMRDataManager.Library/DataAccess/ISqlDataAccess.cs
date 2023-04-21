@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TMRDataManager.Library.Internal.DataAccess
+namespace TMRDataManager.Library.DataAccess
 {
     public interface ISqlDataAccess
     {
