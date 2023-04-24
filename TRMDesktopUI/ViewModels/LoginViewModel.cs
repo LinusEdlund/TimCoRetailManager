@@ -16,8 +16,8 @@ namespace TRMDesktopUI.ViewModels
 		// varje gång vi byter username eller password så kommer set säga att vi har gjort de
 		private string _userName = "linus.edlund2@hotmail.com";
 		private string _password = "Pwd12345.";
-		private IAPIHelper _apiHelper;
-		private IEventAggregator _events;
+		private readonly IAPIHelper _apiHelper;
+		private readonly IEventAggregator _events;
 
         public LoginViewModel(IAPIHelper apiHelper, IEventAggregator events)
 		{

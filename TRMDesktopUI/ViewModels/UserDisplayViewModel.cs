@@ -41,7 +41,7 @@ namespace TRMDesktopUI.ViewModels
                 _selectedUser = value;
                 SelectedUserName = value.Email;
                 UserRoles = new BindingList<string>(value.Roles.Select(x => x.Value).ToList());
-                LoadRoles();
+                LoadRoles().Wait();
                 NotifyOfPropertyChange(() => SelectedUser);
             }
         }
@@ -89,7 +89,7 @@ namespace TRMDesktopUI.ViewModels
             }
         }
 
-        private BindingList<string> _userRoles = new BindingList<string>();
+        private BindingList<string> _userRoles = new();
 
         public BindingList<string> UserRoles
         {
@@ -101,7 +101,7 @@ namespace TRMDesktopUI.ViewModels
             }
         }
 
-        private BindingList<string> _availableRoles = new BindingList<string>();
+        private BindingList<string> _availableRoles = new();
 
         public BindingList<string> AvailableRoles
         {
@@ -147,7 +147,7 @@ namespace TRMDesktopUI.ViewModels
                     _status.UpdateMessage("Fatal Exception", ex.Message);
                     await _window.ShowDialogAsync(_status, null, settings);
                 }
-                TryCloseAsync();
+                await TryCloseAsync();
             }
         }
 
